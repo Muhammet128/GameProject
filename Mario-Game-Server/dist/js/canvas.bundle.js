@@ -1,0 +1,215 @@
+const canvas = document.querySelector('canvas')
+const c = canvas.getContext('2d')
+const platform_image = new Image();
+platform_image.src = "../src/img/Grass_Platform.png"
+const player_image = new Image();
+player_image.src = "../src/img/Character_player_Red2.png"
+const background_image = new Image();
+background_image.src = "../scr/img/Background_Game.png"
+
+canvas.width = 1624
+canvas.height = 776
+
+const gravity = 1.5
+
+class Player {
+  constructor() {
+    this.position = {
+      x: 100,
+      y: 100
+    }
+    this.velocity = {
+      x: 0,
+      y: 0
+    }
+
+    this.width = 150
+    this.height = 150
+  }
+
+  draw() {
+    // c.fillStyle = 'red'
+    // c.fillRect(this.position.x, this.position.y, this.width, this.height)
+    c.drawImage(player_image, this.position.x, this.position.y, 185, 185)
+  }
+
+  update() {
+    this.draw()
+    this.position.x += this.velocity.x
+    this.position.y += this.velocity.y
+
+    if (this.position.y +this.height + this.velocity.y <= canvas.height)
+      this.velocity.y += gravity
+    else this.velocity.y = 0
+  }
+}
+
+class Platform {
+  constructor({ x, y }) {
+    this.position = {
+      x,
+      y
+    }
+
+    this.width = 350
+    this.height = 50
+  }
+  draw() {
+    //c.fillStyle = 'blue'
+    //c.fillRect(this.position.x, this.position.y, this.width, this.height)
+    c.drawImage(platform_image, this.position.x-20, this.position.y-125, 420, 300)
+  }
+}
+
+class GenericObject {
+  constructor({ x, y }) {
+    this.position = {
+      x,
+      y
+    }
+
+    this.width = 350
+    this.height = 50
+  }
+  draw() {
+    //c.fillStyle = 'blue'
+    //c.fillRect(this.position.x, this.position.y, this.width, this.height)
+    c.drawImage(platform_image, this.position.x-20, this.position.y-125, 420, 300)
+  }
+}
+
+const player = new Player()
+const platforms = [new Platform({
+  x: -20, y: 734
+}), new Platform({
+  x: 200, y: 734
+}), new Platform({
+  x: 400, y: 734
+}), new Platform({
+  x: 600, y: 734
+}), new Platform({
+  x: 800, y: 734
+}), new Platform({
+  x: 1000, y: 734
+}), new Platform({
+  x: 1200, y: 734
+}), new Platform({
+  x: 1400, y: 734
+}), new Platform({
+  x: 550, y: 534
+}), new Platform({
+  x: 950, y: 434
+}), new Platform({
+  x: 1250, y: 334
+})
+]
+
+const GenericObjects = [
+    new GenericObject({
+      x: 0,
+      y: 0
+    })
+]
+
+const keys = {
+  right: {
+    pressed: false
+  },
+  left: {
+    pressed: false
+  },
+}
+
+let scrollOffset = 0
+
+function animate() {
+  requestAnimationFrame(animate)
+  c.fillStyle = 'white'
+  c.fillRect(0, 0, canvas.width, canvas.height)
+  player.update()
+  platforms.forEach(platform => {
+    platform.draw()
+  })
+
+
+  if (keys.right.pressed && player.position.x < 400) {
+    player.velocity.x = 5
+  } else if (keys.left.pressed && player.position.x > 100) {
+    player.velocity.x = -5
+  } else {
+    player.velocity.x = 0
+
+    if (keys.right.pressed) {
+      scrollOffset += 5
+      platforms.forEach(platform => {
+        platform.position.x -= 5
+      })
+    } else if (keys.left.pressed) {
+      scrollOffset -= 5
+      platforms.forEach(platform => {
+        platform.position.x += 5
+      })
+    }
+  }
+
+  // platform collision detection //
+  platforms.forEach(platform => {
+    if (player.position.y + player.height <= platform.position.y
+        && player.position.y + player.height + player.velocity.y >= platform.position.y
+        && player.position.x + player.width >= platform.position.x && player.position.x <= platform.position.x
+        + platform.width) {
+      player.velocity.y = 0
+    }
+  })
+
+  if (scrollOffset > 2000) {
+    console.log('You win')
+  }
+}
+
+animate()
+
+addEventListener('keydown', ({ keyCode }) => {
+  switch (keyCode) {
+    case 65:
+      console.log('left')
+      keys.left.pressed = true
+      break
+
+    case 83:
+      console.log('down')
+      break
+
+    case 68:
+      console.log('right')
+      keys.right.pressed = true
+      break
+
+    case 87:
+      console.log('up')
+      player.velocity.y -= 25
+      break
+  }
+})
+
+addEventListener('keyup', ({ keyCode }) => {
+  switch (keyCode) {
+    case 65:
+      console.log('left')
+      keys.left.pressed = false
+      break
+
+    case 83:
+      console.log('down')
+      break
+
+    case 68:
+      console.log('right')
+      keys.right.pressed = false
+      break
+
+    case 87:
+      console.log('up')
+      break
+  }
+})
