@@ -8,7 +8,7 @@ const background_image = new Image();
 background_image.src = "../scr/img/Background_Game.png"
 
 canvas.width = 1624
-canvas.height = 776
+canvas.height = 950
 
 const gravity = 1.5
 
@@ -80,27 +80,27 @@ class GenericObject {
 
 const player = new Player()
 const platforms = [new Platform({
-  x: -20, y: 734
+  x: -20, y: 834
 }), new Platform({
-  x: 200, y: 734
+  x: 200, y: 834
 }), new Platform({
-  x: 400, y: 734
+  x: 400, y: 834
 }), new Platform({
-  x: 600, y: 734
+  x: 600, y: 834
 }), new Platform({
-  x: 800, y: 734
+  x: 800, y: 834
 }), new Platform({
-  x: 1000, y: 734
+  x: 1000, y: 834
 }), new Platform({
-  x: 1200, y: 734
+  x: 1200, y: 834
 }), new Platform({
-  x: 1400, y: 734
+  x: 1400, y: 834
 }), new Platform({
-  x: 550, y: 534
+  x: 550, y: 634
 }), new Platform({
-  x: 950, y: 434
+  x: 950, y: 534
 }), new Platform({
-  x: 1250, y: 334
+  x: 1250, y: 434
 })
 ]
 
