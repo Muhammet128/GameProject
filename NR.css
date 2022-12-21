@@ -1,0 +1,98 @@
+ul {
+    top: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+    -webkit-box-shadow: 0 0 20px red;
+    -moz-box-shadow: 0 0 20px red;
+    box-shadow: 0 0 20px red;
+}
+li {
+    margin: 0;
+    float: left;
+}
+
+    li a {
+        top: 0;
+        display: block;
+        color: red;
+        text-align: center;
+        padding: 14px 52.4px;
+        text-decoration: none;
+        align-items: center;
+    }
+
+#logo {
+    display: block;
+}
+
+.hover:hover {
+    background-color: red;
+    color: black;
+}
+
+body {
+    background-color: black;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+h1{
+    color: red;
+    display: flex;
+    justify-content: center;
+}
+
+#naast {
+    display: inline-block;
+    width: 700px;
+
+}
+
+p {
+    font-size: 1.5em;
+    color: red;
+}
+
+.active {
+    color: black;
+    background-color: red;
+    box-shadow: 0 0 10px red;
+}
+
+#who {
+    text-shadow: 0 0 20px red;
+}
+
+#w{
+    font-size: 2em;
+}
+
+#n{
+    display: inline-block;
+}
+#m{
+    font-size: 2em;
+
+    justify-content: center;
+}
+#end{
+    display: flex;
+    justify-content:  space-between;
+}
+
+#code{
+    display: inline-block;
+}
+
+#moti{
+    display: inline-block;
+    justify-content: start;
+    width: 400px;
+}
+
+#eind{
+    display: inline-block;
+    justify-content: space-between
+}
