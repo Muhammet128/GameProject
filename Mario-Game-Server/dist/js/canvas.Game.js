@@ -5,7 +5,9 @@ platform_image.src = "../src/img/Grass_Platform.png"
 const player_image = new Image();
 player_image.src = "../src/img/Character_player_Red2.png"
 const background_image = new Image();
-background_image.src = "../scr/img/Background_Game.png"
+background_image.src = "../src/img/Background_Game.png"
+const background_image_flip = new Image();
+background_image_flip.src = "../src/img/Background_Game_flip.png"
 
 canvas.width = 1624
 canvas.height = 950
@@ -124,8 +126,13 @@ let scrollOffset = 0
 
 function animate() {
   requestAnimationFrame(animate)
-  c.fillStyle = 'white'
-  c.fillRect(0, 0, canvas.width, canvas.height)
+
+  // c.fillStyle = 'white'
+  // c.fillRect(0, 0, canvas.width, canvas.height)
+
+  c.drawImage(background_image, 40, 0, 1000, 900)
+  c.drawImage(background_image_flip, 1040, 0, 1000, 900)
+
   player.update()
   platforms.forEach(platform => {
     platform.draw()
