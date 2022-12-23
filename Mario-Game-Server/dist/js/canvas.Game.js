@@ -100,6 +100,24 @@ const platforms = [new Platform({
 }), new Platform({
   x: 1400, y: 834
 }), new Platform({
+  x: 1600, y: 834
+}), new Platform({
+  x: 1800, y: 834
+}), new Platform({
+  x: 2000, y: 834
+}), new Platform({
+  x: 2200, y: 834
+}), new Platform({
+  x: 2800, y: 834
+}), new Platform({
+  x: 3000, y: 834
+}), new Platform({
+  x: 3200, y: 834
+}), new Platform({
+  x: 3400, y: 834
+}), new Platform({
+  x: 3600, y: 834
+}), new Platform({
   x: 550, y: 634
 }), new Platform({
   x: 950, y: 534
@@ -152,6 +170,9 @@ function animate() {
       scrollOffset += 5
       platforms.forEach(platform => {
         platform.position.x -= 5
+      })
+      GenericObjects.forEach(GenericObject => {
+        GenericObject.position.x -= 3
       })
     } else if (keys.left.pressed) {
       scrollOffset -= 5
