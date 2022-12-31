@@ -11,6 +11,7 @@ background_image.src = "../src/img/Background_Game.png"
 const background_image_flip = new Image();
 background_image_flip.src = "../src/img/Background_Game_flip.png"
 
+
 canvas.width = 1624
 canvas.height = 950
 
@@ -44,9 +45,10 @@ class Player {
 
     if (this.position.y +this.height + this.velocity.y <= canvas.height)
       this.velocity.y += gravity
-    else this.velocity.y = 0
+  
   }
 }
+
 
 class Platform {
   constructor({ x, y }) {
@@ -82,8 +84,8 @@ class GenericObject {
   }
 }
 
-const player = new Player()
-const platforms = [new Platform({
+let player = new Player()
+let platforms = [new Platform({
   x: -20, y: 834
 }), new Platform({
   x: 200, y: 834
@@ -126,7 +128,7 @@ const platforms = [new Platform({
 })
 ]
 
-const GenericObjects = [
+let GenericObjects = [
     new GenericObject({
       x: 0,
       y: 0
@@ -143,6 +145,65 @@ const keys = {
 }
 
 let scrollOffset = 0
+
+function init() {
+ player = new Player()
+ platforms = [new Platform({
+  x: -20, y: 834
+}), new Platform({
+  x: 200, y: 834
+}), new Platform({
+  x: 400, y: 834
+}), new Platform({
+  x: 600, y: 834
+}), new Platform({
+  x: 800, y: 834
+}), new Platform({
+  x: 1000, y: 834
+}), new Platform({
+  x: 1200, y: 834
+}), new Platform({
+  x: 1400, y: 834
+}), new Platform({
+  x: 1600, y: 834
+}), new Platform({
+  x: 1800, y: 834
+}), new Platform({
+  x: 2000, y: 834
+}), new Platform({
+  x: 2200, y: 834
+}), new Platform({
+  x: 2800, y: 834
+}), new Platform({
+  x: 3000, y: 834
+}), new Platform({
+  x: 3200, y: 834
+}), new Platform({
+  x: 3400, y: 834
+}), new Platform({
+  x: 3600, y: 834
+}), new Platform({
+  x: 550, y: 634
+}), new Platform({
+  x: 950, y: 534
+}), new Platform({
+  x: 1250, y: 434
+})
+]
+
+ GenericObjects = [
+    new GenericObject({
+      x: 0,
+      y: 0
+    })
+]
+
+scrollOffset = 0
+
+}
+
+
+
 
 function animate() {
   requestAnimationFrame(animate)
@@ -192,9 +253,17 @@ function animate() {
     }
   })
 
+
+  // win condition
   if (scrollOffset > 2000) {
     console.log('You win')
   }
+
+  // lose condition
+  if (player.position.y > canvas.height) {
+    init()
+  }
+  
 }
 
 animate()
@@ -243,3 +312,4 @@ addEventListener('keyup', ({ keyCode }) => {
       break
   }
 })
+
