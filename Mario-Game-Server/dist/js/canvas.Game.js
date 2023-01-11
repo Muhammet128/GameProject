@@ -118,13 +118,23 @@ let platforms = [new Platform({
 }), new Platform({
   x: 3400, y: 834
 }), new Platform({
-  x: 3600, y: 834
+  x: 3700, y: 834
 }), new Platform({
-  x: 550, y: 634
+  x: 3800, y: 834
 }), new Platform({
-  x: 950, y: 534
+  x: 4400, y: 834
+}), new Platform({
+  x: 4950, y: 420
+}), new Platform({
+  x: 5700, y: 834
+}), new Platform({
+  x: 550, y: 550
+}), new Platform({
+  x: 950, y: 434
 }), new Platform({
   x: 1250, y: 434
+}), new Platform({
+  x: 3200, y: 320
 })
 ]
 
@@ -181,22 +191,26 @@ function init() {
 }), new Platform({
   x: 3400, y: 834
 }), new Platform({
-  x: 3600, y: 834
+  x: 3700, y: 834
 }), new Platform({
-  x: 550, y: 634
+  x: 3800, y: 834
 }), new Platform({
-  x: 950, y: 534
+  x: 4400, y: 834
+}), new Platform({
+  x: 4500, y: 420
+}), new Platform({
+  x: 5000, y: 834
+}), new Platform({
+  x: 550, y: 550
+}), new Platform({
+  x: 950, y: 434
 }), new Platform({
   x: 1250, y: 434
+}), new Platform({
+  x: 3200, y: 320
 })
 ]
 
- GenericObjects = [
-    new GenericObject({
-      x: 0,
-      y: 0
-    })
-]
 
 scrollOffset = 0
 
@@ -221,7 +235,7 @@ function animate() {
 
 
   if (keys.right.pressed && player.position.x < 400) {
-    player.velocity.x = 5
+    player.velocity.x = 6.5
   } else if (keys.left.pressed && player.position.x > 100) {
     player.velocity.x = -5
   } else {
