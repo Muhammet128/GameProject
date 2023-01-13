@@ -6,6 +6,8 @@ const platform_flying_image = new Image();
 platform_flying_image.src = "../src/img/Object_Grass_Platform.png"
 const player_image = new Image();
 player_image.src = "../src/img/Character_player_Red2.png"
+const player_image_flip = new Image();
+player_image_flip.src = "../src/img/Character_Player_Red2_Flip.png"
 const background_image = new Image();
 background_image.src = "../src/img/Background_Game.png"
 const background_image_flip = new Image();
@@ -27,7 +29,7 @@ class Player {
       x: 0,
       y: 0
     }
-
+    this.direction = false;
     this.width = 150
     this.height = 150
   }
@@ -35,7 +37,12 @@ class Player {
   draw() {
     // c.fillStyle = 'red'
     // c.fillRect(this.position.x, this.position.y, this.width, this.height)
-    c.drawImage(player_image, this.position.x, this.position.y, 185, 185)
+    if(this.direction) {
+      c.drawImage(player_image_flip, this.position.x, this.position.y, 185, 185)
+    }
+    else {
+      c.drawImage(player_image, this.position.x, this.position.y, 185, 185)
+    }
   }
 
   update() {
@@ -227,6 +234,10 @@ function animate() {
   } else {
     player.velocity.x = 0
 
+    if (keys.right.pressed){
+      player_image
+    }
+
     if (keys.right.pressed) {
       scrollOffset += 5
       platforms.forEach(platform => {
@@ -272,7 +283,8 @@ addEventListener('keydown', ({ keyCode }) => {
   switch (keyCode) {
     case 65:
       console.log('left')
-      keys.left.pressed = true
+      keys.left.pressed = true;
+      player.direction = true
       break
 
     case 83:
@@ -281,7 +293,8 @@ addEventListener('keydown', ({ keyCode }) => {
 
     case 68:
       console.log('right')
-      keys.right.pressed = true
+      keys.right.pressed = true;
+      player.direction = false
       break
 
     case 87:
