@@ -127,6 +127,60 @@ let platforms = [new Platform({
 }), new Platform({
   x: 3600, y: 834
 }), new Platform({
+  x: 3800, y: 834
+}), new Platform({
+  x: 4000, y: 834
+}), new Platform({
+  x: 4200, y: 834
+}), new Platform({
+  x: 4400, y: 834
+}), new Platform({
+  x: 4600, y: 834
+}), new Platform({
+  x: 4800, y: 834
+}), new Platform({
+  x: 5000, y: 834
+}), new Platform({
+  x: 5200, y: 834
+}), new Platform({
+  x: 5400, y: 834
+}), new Platform({
+  x: 5600, y: 834
+}), new Platform({
+  x: 5800, y: 834
+}), new Platform({
+  x: 6000, y: 834
+}), new Platform({
+  x: 6200, y: 834
+}), new Platform({
+  x: 6400, y: 834
+}), new Platform({
+  x: 6600, y: 834
+}), new Platform({
+  x: 6800, y: 834
+}), new Platform({
+  x: 7000, y: 834
+}), new Platform({
+  x: 7200, y: 834
+}), new Platform({
+  x: 7400, y: 834
+}), new Platform({
+  x: 7600, y: 834
+}), new Platform({
+  x: 7800, y: 834
+}), new Platform({
+  x: 8000, y: 834
+}), new Platform({
+  x: 8200, y: 834
+}), new Platform({
+  x: 8400, y: 834
+}), new Platform({
+  x: 8600, y: 834
+}), new Platform({
+  x: 8800, y: 834
+}), new Platform({
+  x: 9000, y: 834
+}), new Platform({
   x: 550, y: 634
 }), new Platform({
   x: 950, y: 534
@@ -189,6 +243,60 @@ function init() {
   x: 3400, y: 834
 }), new Platform({
   x: 3600, y: 834
+}), new Platform({
+   x: 3800, y: 834
+}), new Platform({
+   x: 4000, y: 834
+}), new Platform({
+   x: 4200, y: 834
+}), new Platform({
+   x: 4400, y: 834
+}), new Platform({
+   x: 4600, y: 834
+}), new Platform({
+   x: 4800, y: 834
+}), new Platform({
+   x: 5000, y: 834
+}), new Platform({
+   x: 5200, y: 834
+}), new Platform({
+   x: 5400, y: 834
+}), new Platform({
+   x: 5600, y: 834
+}), new Platform({
+   x: 5800, y: 834
+}), new Platform({
+   x: 6000, y: 834
+}), new Platform({
+   x: 6200, y: 834
+}), new Platform({
+   x: 6400, y: 834
+}), new Platform({
+   x: 6600, y: 834
+}), new Platform({
+   x: 6800, y: 834
+}), new Platform({
+   x: 7000, y: 834
+}), new Platform({
+   x: 7200, y: 834
+}), new Platform({
+   x: 7400, y: 834
+}), new Platform({
+   x: 7600, y: 834
+}), new Platform({
+   x: 7800, y: 834
+}), new Platform({
+   x: 8000, y: 834
+}), new Platform({
+   x: 8200, y: 834
+}), new Platform({
+   x: 8400, y: 834
+}), new Platform({
+   x: 8600, y: 834
+}), new Platform({
+   x: 8800, y: 834
+}), new Platform({
+   x: 9000, y: 834
 }), new Platform({
   x: 550, y: 634
 }), new Platform({
