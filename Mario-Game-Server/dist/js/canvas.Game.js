@@ -32,6 +32,7 @@ class Player {
     this.direction = false;
     this.width = 150
     this.height = 150
+    this.isOnGround = false;
   }
 
   draw() {
@@ -370,7 +371,8 @@ function animate() {
         && player.position.y + player.height + player.velocity.y >= platform.position.y
         && player.position.x + player.width >= platform.position.x && player.position.x <= platform.position.x
         + platform.width) {
-      player.velocity.y = 0
+        player.velocity.y = 0
+        player.isOnGround = true;
     }
   })
 
@@ -391,46 +393,49 @@ animate()
 
 addEventListener('keydown', ({ keyCode }) => {
   switch (keyCode) {
-    case 37:
+    case 65:
       console.log('left')
       keys.left.pressed = true;
       player.direction = true
       break
 
-    case 40:
+    case 83:
       console.log('down')
       break
 
-    case 39:
+    case 68:
       console.log('right')
       keys.right.pressed = true;
       player.direction = false
       break
 
-    case 32:
+    case 87:
       console.log('up')
-      player.velocity.y -= 30
+          if (player.isOnGround) {
+              player.isOnGround = false;
+              player.velocity.y -= 25
+          }
       break
   }
 })
 
 addEventListener('keyup', ({ keyCode }) => {
   switch (keyCode) {
-    case 37:
+    case 65:
       console.log('left')
       keys.left.pressed = false
       break
 
-    case 40:
+    case 83:
       console.log('down')
       break
 
-    case 39:
+    case 68:
       console.log('right')
       keys.right.pressed = false
       break
 
-    case 32:
+    case 87:
       console.log('up')
       break
   }
