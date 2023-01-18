@@ -13,8 +13,8 @@ background_image.src = "../src/img/Background_Game.png"
 const background_image_flip = new Image();
 background_image_flip.src = "../src/img/Background_Game_flip.png"
 const enemy_image = new Image();
-enemy_image.src = "../src/img/Goomba.png";
-let player_position_x = 1;
+enemy_image.src = "../src/img/Goomba.png"
+// let player_position_x = 1;
 
 canvas.width = 1624
 canvas.height = 950
@@ -77,7 +77,8 @@ class Enemy {
   draw() {
     // c.fillStyle = 'red'
     // c.fillRect(this.position.x, this.position.y, 100, 100)
-    c.drawImage(enemy_image, this.position.x  - 20 , this.position.y, 100, 100); //this.position.x - 20, this.position.y700, 185)
+    c.drawImage(enemy_image, this.position.x  - 20 , this.position.y, 250, 200);
+    c.drawImage(enemy_image, enemy.position.x, 700, 250, 150)
   }
 
 
@@ -399,7 +400,6 @@ function animate() {
 
   c.drawImage(background_image, 40, 0, 1000, 900)
   c.drawImage(background_image_flip, 1040, 0, 1000, 900)
-  c.drawImage(enemy_image, enemy.position.x, 700, 500, 150)
   enemy.position.x += 5;
   if(enemy.position.x > canvas.width) enemy.position.x = 0;
   enemy.draw()
