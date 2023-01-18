@@ -6,6 +6,8 @@ const platform_flying_image = new Image();
 platform_flying_image.src = "../src/img/Object_Grass_Platform.png"
 const player_image = new Image();
 player_image.src = "../src/img/Character_player_Red2.png"
+const player_image_flip = new Image();
+player_image_flip.src = "../src/img/Character_Player_Red2_Flip.png"
 const background_image = new Image();
 background_image.src = "../src/img/Background_Game.png"
 const background_image_flip = new Image();
@@ -27,7 +29,7 @@ class Player {
       x: 0,
       y: 0
     }
-
+    this.direction = false;
     this.width = 150
     this.height = 150
   }
@@ -35,7 +37,12 @@ class Player {
   draw() {
     // c.fillStyle = 'red'
     // c.fillRect(this.position.x, this.position.y, this.width, this.height)
-    c.drawImage(player_image, this.position.x, this.position.y, 185, 185)
+    if(this.direction) {
+      c.drawImage(player_image_flip, this.position.x, this.position.y, 185, 185)
+    }
+    else {
+      c.drawImage(player_image, this.position.x, this.position.y, 185, 185)
+    }
   }
 
   update() {
@@ -122,6 +129,60 @@ let platforms = [new Platform({
 }), new Platform({
   x: 3800, y: 834
 }), new Platform({
+  x: 4000, y: 834
+}), new Platform({
+  x: 4200, y: 834
+}), new Platform({
+  x: 4400, y: 834
+}), new Platform({
+  x: 4600, y: 834
+}), new Platform({
+  x: 4800, y: 834
+}), new Platform({
+  x: 5000, y: 834
+}), new Platform({
+  x: 5200, y: 834
+}), new Platform({
+  x: 5400, y: 834
+}), new Platform({
+  x: 5600, y: 834
+}), new Platform({
+  x: 5800, y: 834
+}), new Platform({
+  x: 6000, y: 834
+}), new Platform({
+  x: 6200, y: 834
+}), new Platform({
+  x: 6400, y: 834
+}), new Platform({
+  x: 6600, y: 834
+}), new Platform({
+  x: 6800, y: 834
+}), new Platform({
+  x: 7000, y: 834
+}), new Platform({
+  x: 7200, y: 834
+}), new Platform({
+  x: 7400, y: 834
+}), new Platform({
+  x: 7600, y: 834
+}), new Platform({
+  x: 7800, y: 834
+}), new Platform({
+  x: 8000, y: 834
+}), new Platform({
+  x: 8200, y: 834
+}), new Platform({
+  x: 8400, y: 834
+}), new Platform({
+  x: 8600, y: 834
+}), new Platform({
+  x: 8800, y: 834
+}), new Platform({
+  x: 9000, y: 834
+}), new Platform({
+  x: 550, y: 634
+}), new Platform({
   x: 4400, y: 834
 }), new Platform({
   x: 4950, y: 420
@@ -193,7 +254,61 @@ function init() {
 }), new Platform({
   x: 3700, y: 834
 }), new Platform({
-  x: 3800, y: 834
+   x: 3800, y: 834
+}), new Platform({
+   x: 4000, y: 834
+}), new Platform({
+   x: 4200, y: 834
+}), new Platform({
+   x: 4400, y: 834
+}), new Platform({
+   x: 4600, y: 834
+}), new Platform({
+   x: 4800, y: 834
+}), new Platform({
+   x: 5000, y: 834
+}), new Platform({
+   x: 5200, y: 834
+}), new Platform({
+   x: 5400, y: 834
+}), new Platform({
+   x: 5600, y: 834
+}), new Platform({
+   x: 5800, y: 834
+}), new Platform({
+   x: 6000, y: 834
+}), new Platform({
+   x: 6200, y: 834
+}), new Platform({
+   x: 6400, y: 834
+}), new Platform({
+   x: 6600, y: 834
+}), new Platform({
+   x: 6800, y: 834
+}), new Platform({
+   x: 7000, y: 834
+}), new Platform({
+   x: 7200, y: 834
+}), new Platform({
+   x: 7400, y: 834
+}), new Platform({
+   x: 7600, y: 834
+}), new Platform({
+   x: 7800, y: 834
+}), new Platform({
+   x: 8000, y: 834
+}), new Platform({
+   x: 8200, y: 834
+}), new Platform({
+   x: 8400, y: 834
+}), new Platform({
+   x: 8600, y: 834
+}), new Platform({
+   x: 8800, y: 834
+}), new Platform({
+   x: 9000, y: 834
+}), new Platform({
+  x: 550, y: 634
 }), new Platform({
   x: 4400, y: 834
 }), new Platform({
@@ -241,6 +356,10 @@ function animate() {
   } else {
     player.velocity.x = 0
 
+    if (keys.right.pressed){
+      player_image
+    }
+
     if (keys.right.pressed) {
       scrollOffset += 5
       platforms.forEach(platform => {
@@ -286,7 +405,8 @@ addEventListener('keydown', ({ keyCode }) => {
   switch (keyCode) {
     case 65:
       console.log('left')
-      keys.left.pressed = true
+      keys.left.pressed = true;
+      player.direction = true
       break
 
     case 83:
@@ -295,7 +415,8 @@ addEventListener('keydown', ({ keyCode }) => {
 
     case 68:
       console.log('right')
-      keys.right.pressed = true
+      keys.right.pressed = true;
+      player.direction = false
       break
 
     case 87:
