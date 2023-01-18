@@ -12,7 +12,15 @@ const background_image = new Image();
 background_image.src = "../src/img/Background_Game.png"
 const background_image_flip = new Image();
 background_image_flip.src = "../src/img/Background_Game_flip.png"
+const enemy_image = new Image();
+enemy_image.src = "../src/img/Goomba.png";
 
+console.log(enemy_image);
+
+
+// const enemy_image = new Image();
+// enemy_image.src = "../src/img/Goomba.png";
+let player_position_x = 1;
 
 canvas.width = 1624
 canvas.height = 950
@@ -50,15 +58,43 @@ class Player {
     this.position.x += this.velocity.x
     this.position.y += this.velocity.y
 
-    if (this.position.y +this.height + this.velocity.y <= canvas.height)
+    if (this.position.y + this.height + this.velocity.y <= canvas.height)
       this.velocity.y += gravity
-  
+
   }
+}
+
+
+class Enemy {
+  constructor({
+    x,
+    y
+  }) {
+    this.position = {
+      x,
+      y
+    }
+
+
+    this.width = 450
+    this.height = 250
+  }
+
+  draw() {
+    // c.fillStyle = 'red'
+    // c.fillRect(this.position.x, this.position.y, 100, 100)
+    c.drawImage(enemy_image, this.position.x  - 20 , this.position.y, 100, 100); //this.position.x - 20, this.position.y700, 185)
+  }
+
+
 }
 
 
 class Platform {
-  constructor({ x, y }) {
+  constructor({
+    x,
+    y
+  }) {
     this.position = {
       x,
       y
@@ -70,12 +106,15 @@ class Platform {
   draw() {
     //c.fillStyle = 'blue'
     //c.fillRect(this.position.x, this.position.y, this.width, this.height)
-    c.drawImage(platform_image, this.position.x-20, this.position.y-125, 420, 300)
+    c.drawImage(platform_image, this.position.x - 20, this.position.y - 125, 420, 300)
   }
 }
 
 class GenericObject {
-  constructor({ x, y }) {
+  constructor({
+    x,
+    y
+  }) {
     this.position = {
       x,
       y
@@ -87,53 +126,77 @@ class GenericObject {
   draw() {
     //c.fillStyle = 'blue'
     //c.fillRect(this.position.x, this.position.y, this.width, this.height)
-    c.drawImage(platform_image, this.position.x-20, this.position.y-125, 420, 300)
+    c.drawImage(platform_image, this.position.x - 20, this.position.y - 125, 420, 300)
   }
 }
 
 let player = new Player()
+let enemy = new Enemy({
+  x: 0,
+  y: 700
+})
 let platforms = [new Platform({
-  x: -20, y: 834
+  x: -20,
+  y: 834
 }), new Platform({
-  x: 200, y: 834
+  x: 200,
+  y: 834
 }), new Platform({
-  x: 400, y: 834
+  x: 400,
+  y: 834
 }), new Platform({
-  x: 600, y: 834
+  x: 600,
+  y: 834
 }), new Platform({
-  x: 800, y: 834
+  x: 800,
+  y: 834
 }), new Platform({
-  x: 1000, y: 834
+  x: 1000,
+  y: 834
 }), new Platform({
-  x: 1200, y: 834
+  x: 1200,
+  y: 834
 }), new Platform({
-  x: 1400, y: 834
+  x: 1400,
+  y: 834
 }), new Platform({
-  x: 1600, y: 834
+  x: 1600,
+  y: 834
 }), new Platform({
-  x: 1800, y: 834
+  x: 1800,
+  y: 834
 }), new Platform({
-  x: 2000, y: 834
+  x: 2000,
+  y: 834
 }), new Platform({
-  x: 2200, y: 834
+  x: 2200,
+  y: 834
 }), new Platform({
-  x: 2800, y: 834
+  x: 2800,
+  y: 834
 }), new Platform({
-  x: 3000, y: 834
+  x: 3000,
+  y: 834
 }), new Platform({
-  x: 3200, y: 834
+  x: 3200,
+  y: 834
 }), new Platform({
-  x: 3400, y: 834
+  x: 3400,
+  y: 834
 }), new Platform({
-  x: 3700, y: 834
+  x: 3700,
+  y: 834
 }), new Platform({
-  x: 3800, y: 834
+  x: 3800,
+  y: 834
 }), new Platform({
   x: 4000, y: 834
 }), new Platform({
   x: 4200, y: 834
 }), new Platform({
   x: 4400, y: 834
+  x: 4400,
+  y: 834
 }), new Platform({
   x: 4600, y: 834
 }), new Platform({
@@ -186,24 +249,30 @@ let platforms = [new Platform({
   x: 4400, y: 834
 }), new Platform({
   x: 4950, y: 420
+  x: 4950,
+  y: 420
 }), new Platform({
-  x: 5700, y: 834
+  x: 5700,
+  y: 834
 }), new Platform({
-  x: 550, y: 550
+  x: 550,
+  y: 550
 }), new Platform({
-  x: 950, y: 434
+  x: 950,
+  y: 434
 }), new Platform({
-  x: 1250, y: 434
+  x: 1250,
+  y: 434
 }), new Platform({
-  x: 3200, y: 320
-})
-]
+  x: 3200,
+  y: 320
+})]
 
 let GenericObjects = [
-    new GenericObject({
-      x: 0,
-      y: 0
-    })
+  new GenericObject({
+    x: 0,
+    y: 0
+  })
 ]
 
 const keys = {
@@ -325,9 +394,86 @@ function init() {
   x: 3200, y: 320
 })
 ]
+  player = new Player()
+  platforms = [new Platform({
+    x: -20,
+    y: 834
+  }), new Platform({
+    x: 200,
+    y: 834
+  }), new Platform({
+    x: 400,
+    y: 834
+  }), new Platform({
+    x: 600,
+    y: 834
+  }), new Platform({
+    x: 800,
+    y: 834
+  }), new Platform({
+    x: 1000,
+    y: 834
+  }), new Platform({
+    x: 1200,
+    y: 834
+  }), new Platform({
+    x: 1400,
+    y: 834
+  }), new Platform({
+    x: 1600,
+    y: 834
+  }), new Platform({
+    x: 1800,
+    y: 834
+  }), new Platform({
+    x: 2000,
+    y: 834
+  }), new Platform({
+    x: 2200,
+    y: 834
+  }), new Platform({
+    x: 2800,
+    y: 834
+  }), new Platform({
+    x: 3000,
+    y: 834
+  }), new Platform({
+    x: 3200,
+    y: 834
+  }), new Platform({
+    x: 3400,
+    y: 834
+  }), new Platform({
+    x: 3700,
+    y: 834
+  }), new Platform({
+    x: 3800,
+    y: 834
+  }), new Platform({
+    x: 4400,
+    y: 834
+  }), new Platform({
+    x: 4500,
+    y: 420
+  }), new Platform({
+    x: 5000,
+    y: 834
+  }), new Platform({
+    x: 550,
+    y: 550
+  }), new Platform({
+    x: 950,
+    y: 434
+  }), new Platform({
+    x: 1250,
+    y: 434
+  }), new Platform({
+    x: 3200,
+    y: 320
+  })]
 
 
-scrollOffset = 0
+  scrollOffset = 0
 
 }
 
@@ -342,6 +488,17 @@ function animate() {
 
   c.drawImage(background_image, 40, 0, 1000, 900)
   c.drawImage(background_image_flip, 1040, 0, 1000, 900)
+  c.drawImage(enemy_image, player_position_x, 700, 500, 150)
+  enemy.position.x += 5;
+  if(enemy.position.x > canvas.width) enemy.position.x = 0;
+  enemy.draw()
+
+
+
+  // Enemy.update()
+  // platforms.forEach(platform => {
+  //   platform.draw()
+  // })
 
   player.update()
   platforms.forEach(platform => {
@@ -365,6 +522,8 @@ function animate() {
       platforms.forEach(platform => {
         platform.position.x -= 5
       })
+
+
       GenericObjects.forEach(GenericObject => {
         GenericObject.position.x -= 3
       })
@@ -374,14 +533,15 @@ function animate() {
         platform.position.x += 5
       })
     }
+
   }
 
   // platform collision detection //
   platforms.forEach(platform => {
-    if (player.position.y + player.height <= platform.position.y
-        && player.position.y + player.height + player.velocity.y >= platform.position.y
-        && player.position.x + player.width >= platform.position.x && player.position.x <= platform.position.x
-        + platform.width) {
+    if (player.position.y + player.height <= platform.position.y &&
+      player.position.y + player.height + player.velocity.y >= platform.position.y &&
+      player.position.x + player.width >= platform.position.x && player.position.x <= platform.position.x +
+      platform.width) {
       player.velocity.y = 0
     }
   })
@@ -396,12 +556,14 @@ function animate() {
   if (player.position.y > canvas.height) {
     init()
   }
-  
+
 }
 
 animate()
 
-addEventListener('keydown', ({ keyCode }) => {
+addEventListener('keydown', ({
+  keyCode
+}) => {
   switch (keyCode) {
     case 65:
       console.log('left')
@@ -426,7 +588,9 @@ addEventListener('keydown', ({ keyCode }) => {
   }
 })
 
-addEventListener('keyup', ({ keyCode }) => {
+addEventListener('keyup', ({
+  keyCode
+}) => {
   switch (keyCode) {
     case 65:
       console.log('left')
@@ -448,3 +612,5 @@ addEventListener('keyup', ({ keyCode }) => {
   }
 })
 
+
+document.addEventListener('keydown', (event) => {}, false);
