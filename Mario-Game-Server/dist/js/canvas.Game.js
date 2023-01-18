@@ -14,12 +14,6 @@ const background_image_flip = new Image();
 background_image_flip.src = "../src/img/Background_Game_flip.png"
 const enemy_image = new Image();
 enemy_image.src = "../src/img/Goomba.png";
-
-console.log(enemy_image);
-
-
-// const enemy_image = new Image();
-// enemy_image.src = "../src/img/Goomba.png";
 let player_position_x = 1;
 
 canvas.width = 1624
@@ -194,7 +188,7 @@ let platforms = [new Platform({
 }), new Platform({
   x: 4200, y: 834
 }), new Platform({
-  x: 4400, y: 834
+  x: 4400, y: 834,
   x: 4400,
   y: 834
 }), new Platform({
@@ -248,15 +242,12 @@ let platforms = [new Platform({
 }), new Platform({
   x: 4400, y: 834
 }), new Platform({
-  x: 4950, y: 420
+  x: 4950, y: 420,
   x: 4950,
   y: 420
 }), new Platform({
   x: 5700,
   y: 834
-}), new Platform({
-  x: 550,
-  y: 550
 }), new Platform({
   x: 950,
   y: 434
@@ -385,8 +376,6 @@ function init() {
 }), new Platform({
   x: 5000, y: 834
 }), new Platform({
-  x: 550, y: 550
-}), new Platform({
   x: 950, y: 434
 }), new Platform({
   x: 1250, y: 434
@@ -394,84 +383,6 @@ function init() {
   x: 3200, y: 320
 })
 ]
-  player = new Player()
-  platforms = [new Platform({
-    x: -20,
-    y: 834
-  }), new Platform({
-    x: 200,
-    y: 834
-  }), new Platform({
-    x: 400,
-    y: 834
-  }), new Platform({
-    x: 600,
-    y: 834
-  }), new Platform({
-    x: 800,
-    y: 834
-  }), new Platform({
-    x: 1000,
-    y: 834
-  }), new Platform({
-    x: 1200,
-    y: 834
-  }), new Platform({
-    x: 1400,
-    y: 834
-  }), new Platform({
-    x: 1600,
-    y: 834
-  }), new Platform({
-    x: 1800,
-    y: 834
-  }), new Platform({
-    x: 2000,
-    y: 834
-  }), new Platform({
-    x: 2200,
-    y: 834
-  }), new Platform({
-    x: 2800,
-    y: 834
-  }), new Platform({
-    x: 3000,
-    y: 834
-  }), new Platform({
-    x: 3200,
-    y: 834
-  }), new Platform({
-    x: 3400,
-    y: 834
-  }), new Platform({
-    x: 3700,
-    y: 834
-  }), new Platform({
-    x: 3800,
-    y: 834
-  }), new Platform({
-    x: 4400,
-    y: 834
-  }), new Platform({
-    x: 4500,
-    y: 420
-  }), new Platform({
-    x: 5000,
-    y: 834
-  }), new Platform({
-    x: 550,
-    y: 550
-  }), new Platform({
-    x: 950,
-    y: 434
-  }), new Platform({
-    x: 1250,
-    y: 434
-  }), new Platform({
-    x: 3200,
-    y: 320
-  })]
-
 
   scrollOffset = 0
 
@@ -488,7 +399,7 @@ function animate() {
 
   c.drawImage(background_image, 40, 0, 1000, 900)
   c.drawImage(background_image_flip, 1040, 0, 1000, 900)
-  c.drawImage(enemy_image, player_position_x, 700, 500, 150)
+  c.drawImage(enemy_image, enemy.position.x, 700, 500, 150)
   enemy.position.x += 5;
   if(enemy.position.x > canvas.width) enemy.position.x = 0;
   enemy.draw()
