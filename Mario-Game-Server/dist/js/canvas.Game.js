@@ -16,6 +16,7 @@ const enemy_image = new Image();
 enemy_image.src = "../src/img/Goomba.png"
 // let player_position_x = 1;
 
+
 canvas.width = 1624
 canvas.height = 950
 
@@ -24,8 +25,8 @@ const gravity = 1.5
 class Player {
   constructor() {
     this.position = {
-      x: 100,
-      y: 100
+      x: 150,
+      y: 150
     }
     this.velocity = {
       x: 0,
@@ -36,14 +37,31 @@ class Player {
     this.height = 150
   }
 
+  isWithin(x, y){
+    if(x >= this.position.x && x <= this.position.x + this.width){
+      if(y >= this.position.y && y <= this.position.y+this.height){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  boxIsWidthin(box){
+    let p1 = this.isWithin(box.position.x, box.position.y);
+    let p2 = this.isWithin(box.position.x + this.width, box.position.y);
+    let p3 = this.isWithin(box.position.x, box.position.y + this.height);
+    let p4 = this.isWithin(box.position.x + this.width, box.position.y + this.height);
+    return p1 || p2 || p3 || p4;
+  }
+
   draw() {
     // c.fillStyle = 'red'
     // c.fillRect(this.position.x, this.position.y, this.width, this.height)
     if(this.direction) {
-      c.drawImage(player_image_flip, this.position.x, this.position.y, 185, 185)
+      c.drawImage(player_image_flip, this.position.x, this.position.y, this.width, this.height)
     }
     else {
-      c.drawImage(player_image, this.position.x, this.position.y, 185, 185)
+      c.drawImage(player_image, this.position.x, this.position.y, this.width, this.height)
     }
   }
 
@@ -70,17 +88,36 @@ class Enemy {
     }
 
 
-    this.width = 450
-    this.height = 250
+    this.width = 150
+    this.height = 150
   }
+
+  isWithin(x, y){
+    if(x >= this.position.x && x <= this.position.x + this.width){
+      if(y >= this.position.y && y <= this.position.y+this.height){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  boxIsWidthin(box){
+    let p1 = this.isWithin(box.position.x, box.position.y);
+    let p2 = this.isWithin(box.position.x + box.width, box.position.y);
+    let p3 = this.isWithin(box.position.x, box.position.y + box.height);
+    let p4 = this.isWithin(box.position.x + box.width, box.position.y + box.height);
+    return p1 || p2 || p3 || p4;
+  }
+  
 
   draw() {
     // c.fillStyle = 'red'
     // c.fillRect(this.position.x, this.position.y, 100, 100)
-    c.drawImage(enemy_image, this.position.x  - 20 , this.position.y, 250, 200);
-    c.drawImage(enemy_image, enemy.position.x, 700, 250, 150)
+    c.drawImage(enemy_image, this.position.x , this.position.y, this.width, this.height);
+    enemy.position.x -= 3;
+    // c.strokeRect(this.x, this.y, this.width, this.height);
+    // c.strokeStyle = 'white';
   }
-
 
 }
 
@@ -125,6 +162,7 @@ class GenericObject {
   }
 }
 
+var enemies = [];
 let player = new Player()
 let enemy = new Enemy({
   x: 0,
@@ -400,8 +438,11 @@ function animate() {
 
   c.drawImage(background_image, 40, 0, 1000, 900)
   c.drawImage(background_image_flip, 1040, 0, 1000, 900)
-  enemy.position.x += 5;
-  if(enemy.position.x > canvas.width) enemy.position.x = 0;
+
+  
+  if(enemy.position.x  < 0){
+    enemy.position.x = canvas.width;
+  }
   enemy.draw()
 
 
@@ -415,6 +456,12 @@ function animate() {
   platforms.forEach(platform => {
     platform.draw()
   })
+
+
+// if (enemy.x + 200 >= canvas.width / 2 - 50 && enemy.x <= canvas.width / 2 - 50 + 200)
+  if (keys.right.pressed) {
+    enemy.position.x -= 3
+  } 
 
 
   if (keys.right.pressed && player.position.x < 400) {
@@ -465,6 +512,10 @@ function animate() {
 
   // lose condition
   if (player.position.y > canvas.height) {
+    init()
+  }
+
+  if(player.boxIsWidthin(enemy) || enemy.boxIsWidthin(player)){
     init()
   }
 
