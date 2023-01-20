@@ -115,6 +115,8 @@ let platforms = [new Platform({
 }), new Platform({
   x: 1600, y: 834
 }), new Platform({
+  x: 1800, y: 834
+}), new Platform({
   x: 2000, y: 834
 }), new Platform({
   x: 2200, y: 834
@@ -126,14 +128,6 @@ let platforms = [new Platform({
   x: 3200, y: 834
 }), new Platform({
   x: 3400, y: 834
-}), new Platform({
-  x: 3600, y: 834
-}), new Platform({
-  x: 3800, y: 834
-}), new Platform({
-  x: 4000, y: 834
-}), new Platform({
-  x: 4200, y: 834
 }), new Platform({
   x: 4400, y: 834
 }), new Platform({
@@ -185,18 +179,35 @@ let platforms = [new Platform({
 }), new Platform({
   x: 3600, y: 634
 }), new Platform({
-  x: 550,
-  y: 550
+  x: 3800, y: 634
 }), new Platform({
-  x: 950,
-  y: 434
+  x: 4000, y: 634
 }), new Platform({
-  x: 1250,
-  y: 434
+  x: 4200, y: 634
 }), new Platform({
-  x: 3200,
-  y: 320
-})]
+  x: 3800, y: 434
+}), new Platform({
+  x: 4000, y: 434
+}), new Platform({
+  x: 5000, y: 434
+}), new Platform({
+  x: 5200, y: 434
+}), new Platform({
+  x: 5600, y: 634
+}), new Platform({
+  x: 5800, y: 634
+}), new Platform({
+  x: 6000, y: 634
+}), new Platform({
+  x: 6400, y: 534
+}), new Platform({
+  x: 6600, y: 534
+}), new Platform({
+  x: 7200, y: 634
+}), new Platform({
+  x: 7400, y: 634
+})
+]
 
 let GenericObjects = [
     new GenericObject({
