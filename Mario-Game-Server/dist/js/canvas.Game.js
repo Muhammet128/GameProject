@@ -21,7 +21,7 @@ canvas.height = 950
 var Score = 0;
 
 
-const gravity = 1.5
+const gravity = 1.0
 
 class Player {
   constructor() {
@@ -34,17 +34,17 @@ class Player {
       y: 0,
     }
     this.direction = false;
-    this.width = 150
-    this.height = 150
+    this.width = 90
+    this.height = 90
     this.isOnGround = false;
-    this.hitbox = {
-      position: {
-        x: this.position.x,
-        y: this.position.y,
-      },
-      width:10,
-      height:10
-    }
+    // this.hitbox = {
+    //   position: {
+    //     x: this.position.x,
+    //     y: this.position.y,
+    //   },
+    //   width:10,
+    //   height:10
+    // }
   }
 
   isWithin(x, y) {
@@ -75,7 +75,7 @@ class Player {
 
   update() {
     this.draw()
-    this.updateHitBox()
+    // this.updateHitBox()
 
     // c.fillStyle = 'red';
     // c.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height);
@@ -97,16 +97,16 @@ class Player {
 
   }
 
-  updateHitBox(){
-    this.hitbox = {
-      position: {
-        x: this.position.x + 35, 
-        y: this.position.y + 30,
-      },
-      width:75,
-      height:80
-    }
-  }
+  // updateHitBox(){
+  //   this.hitbox = {
+  //     position: {
+  //       x: this.position.x + 35, 
+  //       y: this.position.y + 30,
+  //     },
+  //     width:75,
+  //     height:80
+  //   }
+  // }
 }
 
 
@@ -121,16 +121,16 @@ class Enemy {
     }
 
 
-    this.width = 150
-    this.height = 150
-    this.hitbox = {
-      position: {
-        x: this.position.x,
-        y: this.position.y,
-      },
-      width: 10,
-      height:10
-    }
+    this.width = 60
+    this.height = 60
+    // this.hitbox = {
+    //   position: {
+    //     x: this.position.x,
+    //     y: this.position.y,
+    //   },
+    //   width: 10,
+    //   height:10
+    // }
   
   }
 
@@ -154,39 +154,39 @@ class Enemy {
 
   draw() {
     // c.fillStyle = 'red';
-    // c.fillRect(this.position.x, this.position.y, 100, 100);
+    // c.fillRect(this.position.x, this.position.y, this.width, this.height);
     
     c.drawImage(enemy_image, this.position.x, this.position.y, this.width, this.height);
     enemy.position.x -= 3;
 
   }
 
-  update() {
-    this.draw()
-    this.updateHitBox()
+  // update() {
+  //   this.draw()
+  //   this.updateHitBox()
 
-    // c.fillStyle = 'red';
-    // c.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height);
+  //   c.fillStyle = 'red';
+  //   c.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height);
 
-    // c.fillStyle = 'red';
-    // c.fillRect(
-    //   this.hitbox.position.x,
-    //   this.hitbox.position.y,
-    //   this.hitbox.width,
-    //   this.hitbox.height,
-    // )
-  } 
+  //   c.fillStyle = 'red';
+  //   c.fillRect(
+  //     this.hitbox.position.x,
+  //     this.hitbox.position.y,
+  //     this.hitbox.width,
+  //     this.hitbox.height,
+  //   )
+  // } 
 
-  updateHitBox(){
-    this.hitbox = {
-      position: {
-        x: this.position.x + 500, 
-        y: this.position.y + 30,
-      },
-      width:55,
-      height:10,
-    }
-  }
+  // updateHitBox(){
+  //   this.hitbox = {
+  //     position: {
+  //       x: this.position.x + 30, 
+  //       y: this.position.y + 30,
+  //     },
+  //     width:35,
+  //     height:10,
+  //   }
+  // }
 
 }
 
@@ -234,7 +234,7 @@ class GenericObject {
 let player = new Player()
 let enemy = new Enemy({
   x: 0,
-  y: 715,
+  y: 750,
 })
 let platforms = [new Platform({
   x: -20,
