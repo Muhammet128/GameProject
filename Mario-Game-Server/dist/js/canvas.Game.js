@@ -237,123 +237,87 @@ let enemy = new Enemy({
   y: 730,
 })
 let platforms = [new Platform({
-  x: -20,
-  y: 834
+  x: -20, y: 834
 }), new Platform({
-  x: 200,
-  y: 834
+  x: 200, y: 834
 }), new Platform({
-  x: 400,
-  y: 834
+  x: 400, y: 834
 }), new Platform({
-  x: 600,
-  y: 834
+  x: 600, y: 834
 }), new Platform({
-  x: 800,
-  y: 834
+  x: 800, y: 834
 }), new Platform({
-  x: 1000,
-  y: 834
+  x: 1000, y: 834
 }), new Platform({
-  x: 1200,
-  y: 834
+  x: 1200, y: 834
 }), new Platform({
-  x: 1400,
-  y: 834
+  x: 1400, y: 834
 }), new Platform({
-  x: 1600,
-  y: 834
+  x: 1600, y: 834
 }), new Platform({
   x: 1800, y: 834
 }), new Platform({
   x: 2000, y: 834
 }), new Platform({
-  x: 2200,
-  y: 834
+  x: 2200, y: 834
 }), new Platform({
-  x: 2800,
-  y: 834
+  x: 2800, y: 834
 }), new Platform({
-  x: 3000,
-  y: 834
+  x: 3000, y: 834
 }), new Platform({
-  x: 3200,
-  y: 834
+  x: 3200, y: 834
 }), new Platform({
-  x: 3400,
-  y: 834
+  x: 3400, y: 834
 }), new Platform({
   x: 4400, y: 834
 }), new Platform({
-  x: 4600,
-  y: 834
+  x: 4600, y: 834
 }), new Platform({
-  x: 4800,
-  y: 834
+  x: 4800, y: 834
 }), new Platform({
-  x: 5000,
-  y: 834
+  x: 5000, y: 834
 }), new Platform({
-  x: 5200,
-  y: 834
+  x: 5200, y: 834
 }), new Platform({
-  x: 5400,
-  y: 834
+  x: 5400, y: 834
 }), new Platform({
-  x: 5600,
-  y: 834
+  x: 5600, y: 834
 }), new Platform({
-  x: 5800,
-  y: 834
+  x: 5800, y: 834
 }), new Platform({
-  x: 6000,
-  y: 834
+  x: 6000, y: 834
 }), new Platform({
-  x: 6200,
-  y: 834
+  x: 6200, y: 834
 }), new Platform({
-  x: 6400,
-  y: 834
+  x: 6400, y: 834
 }), new Platform({
-  x: 6600,
-  y: 834
+  x: 6600, y: 834
 }), new Platform({
-  x: 6800,
-  y: 834
+  x: 6800, y: 834
 }), new Platform({
-  x: 7000,
-  y: 834
+  x: 7000, y: 834
 }), new Platform({
-  x: 7200,
-  y: 834
+  x: 7200, y: 834
 }), new Platform({
   x: 8000, y: 834
 }), new Platform({
-  x: 8200,
-  y: 834
+  x: 8200, y: 834
 }), new Platform({
-  x: 8400,
-  y: 834
+  x: 8400, y: 834
 }), new Platform({
-  x: 8600,
-  y: 834
+  x: 8600, y: 834
 }), new Platform({
-  x: 8800,
-  y: 834
+  x: 8800, y: 834
 }), new Platform({
-  x: 9000,
-  y: 834
+  x: 9000, y: 834
 }), new Platform({
-  x: 550,
-  y: 634
+  x: 550, y: 634
 }), new Platform({
-  x: 950,
-  y: 534
+  x: 950, y: 534
 }), new Platform({
-  x: 4950,
-  y: 420,
-  x: 4950,
-  y: 420
+  x: 1250, y: 434
+}), new Platform({
+  x: 4950, y: 420
 }), new Platform({
   x: 3600, y: 634
 }), new Platform({
