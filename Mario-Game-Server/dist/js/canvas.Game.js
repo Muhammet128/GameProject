@@ -25,6 +25,9 @@ let player_position_x = 1;
 canvas.width = 1624
 canvas.height = 950
 
+var Score = 0;
+
+
 const gravity = 1.5
 
 class Player {
@@ -40,6 +43,7 @@ class Player {
     this.direction = false;
     this.width = 150
     this.height = 150
+    this.isOnGround = false
   }
 
   draw() {
@@ -184,16 +188,6 @@ let platforms = [new Platform({
   x: 3400,
   y: 834
 }), new Platform({
-  x: 3700,
-  y: 834
-}), new Platform({
-  x: 3800,
-  y: 834
-}), new Platform({
-  x: 4000, y: 834
-}), new Platform({
-  x: 4200, y: 834
-}), new Platform({
   x: 4400, y: 834
   x: 4400,
   y: 834
@@ -226,12 +220,6 @@ let platforms = [new Platform({
 }), new Platform({
   x: 7200, y: 834
 }), new Platform({
-  x: 7400, y: 834
-}), new Platform({
-  x: 7600, y: 834
-}), new Platform({
-  x: 7800, y: 834
-}), new Platform({
   x: 8000, y: 834
 }), new Platform({
   x: 8200, y: 834
@@ -248,25 +236,39 @@ let platforms = [new Platform({
 }), new Platform({
   x: 4400, y: 834
 }), new Platform({
-  x: 4950, y: 420
-  x: 4950,
-  y: 420
+  x: 1250, y: 434
 }), new Platform({
-  x: 5700,
-  y: 834
+  x: 3600, y: 634
 }), new Platform({
-  x: 550,
-  y: 550
+  x: 3800, y: 634
 }), new Platform({
-  x: 950,
-  y: 434
+  x: 4000, y: 634
 }), new Platform({
-  x: 1250,
-  y: 434
+  x: 4200, y: 634
 }), new Platform({
-  x: 3200,
-  y: 320
-})]
+  x: 3800, y: 434
+}), new Platform({
+  x: 4000, y: 434
+}), new Platform({
+  x: 5000, y: 434
+}), new Platform({
+  x: 5200, y: 434
+}), new Platform({
+  x: 5600, y: 634
+}), new Platform({
+  x: 5800, y: 634
+}), new Platform({
+  x: 6000, y: 634
+}), new Platform({
+  x: 6400, y: 534
+}), new Platform({
+  x: 6600, y: 534
+}), new Platform({
+  x: 7200, y: 634
+}), new Platform({
+  x: 7400, y: 634
+})
+]
 
 let GenericObjects = [
   new GenericObject({
@@ -321,14 +323,6 @@ function init() {
 }), new Platform({
   x: 3400, y: 834
 }), new Platform({
-  x: 3700, y: 834
-}), new Platform({
-   x: 3800, y: 834
-}), new Platform({
-   x: 4000, y: 834
-}), new Platform({
-   x: 4200, y: 834
-}), new Platform({
    x: 4400, y: 834
 }), new Platform({
    x: 4600, y: 834
@@ -359,12 +353,6 @@ function init() {
 }), new Platform({
    x: 7200, y: 834
 }), new Platform({
-   x: 7400, y: 834
-}), new Platform({
-   x: 7600, y: 834
-}), new Platform({
-   x: 7800, y: 834
-}), new Platform({
    x: 8000, y: 834
 }), new Platform({
    x: 8200, y: 834
@@ -391,7 +379,35 @@ function init() {
 }), new Platform({
   x: 1250, y: 434
 }), new Platform({
-  x: 3200, y: 320
+   x: 3600, y: 634
+}), new Platform({
+   x: 3800, y: 634
+}), new Platform({
+   x: 4000, y: 634
+}), new Platform({
+   x: 4200, y: 634
+}), new Platform({
+   x: 3800, y: 434
+}), new Platform({
+   x: 4000, y: 434
+}), new Platform({
+   x: 5000, y: 434
+}), new Platform({
+   x: 5200, y: 434
+}), new Platform({
+   x: 5600, y: 634
+}), new Platform({
+   x: 5800, y: 634
+}), new Platform({
+   x: 6000, y: 634
+}), new Platform({
+   x: 6400, y: 534
+}), new Platform({
+   x: 6600, y: 534
+}), new Platform({
+   x: 7200, y: 634
+}), new Platform({
+   x: 7400, y: 634
 })
 ]
   player = new Player()
@@ -505,7 +521,8 @@ function animate() {
     platform.draw()
   })
 
-
+  Score = Score + 1;
+  document.getElementById("Score").innerHTML = Score;
   if (keys.right.pressed && player.position.x < 400) {
     player.velocity.x = 6.5
   } else if (keys.left.pressed && player.position.x > 100) {
@@ -543,6 +560,7 @@ function animate() {
       player.position.x + player.width >= platform.position.x && player.position.x <= platform.position.x +
       platform.width) {
       player.velocity.y = 0
+      player.isOnGround = true;
     }
   })
 
@@ -583,7 +601,9 @@ addEventListener('keydown', ({
 
     case 87:
       console.log('up')
-      player.velocity.y -= 25
+      if (player.isOnGround) {
+        player.isOnGround = false;
+        player.velocity.y -= 25}
       break
   }
 })
