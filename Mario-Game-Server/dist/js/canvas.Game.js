@@ -121,8 +121,8 @@ class Enemy {
     }
 
 
-    this.width = 60
-    this.height = 60
+    this.width = 100
+    this.height = 100
     // this.hitbox = {
     //   position: {
     //     x: this.position.x,
@@ -234,7 +234,7 @@ class GenericObject {
 let player = new Player()
 let enemy = new Enemy({
   x: 0,
-  y: 750,
+  y: 730,
 })
 let platforms = [new Platform({
   x: -20,
