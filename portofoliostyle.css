@@ -1,0 +1,127 @@
+body{
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+}
+
+ul {
+    top: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+    -webkit-box-shadow: 0 0 20px red;
+    -moz-box-shadow: 0 0 20px red;
+    box-shadow: 0 0 20px red;
+}
+
+li {
+    margin: 0;
+    float: left;
+}
+
+    li a {
+        top: 0;
+        display: block;
+        color: red;
+        text-align: center;
+        padding: 14px 52.4px;
+        text-decoration: none;
+    }
+
+        li a:hover {
+            background-color: red;
+            color: black;
+        }
+
+li.hide{
+    display: none;
+}
+
+
+.container{
+    height: 80vh;
+    background-color: rgb(255, 255, 255);
+}
+
+.pf {
+    display: flex;
+    height: 80vh;
+    background-color: rgb(23, 67, 53);
+    color: white;
+
+
+}
+
+.pf img{
+    object-fit: cover;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+}
+
+
+.pftekst{
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+    align-items: left;
+    margin: 0;
+    margin-left: 50px;
+}
+
+.pftekst h1{
+    display: flex;
+}
+
+.portofolio-tekst{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    color: rgb(9, 34, 26);
+}
+
+.portofolio-tekst1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+.portofolio-tekst1 h1{
+    font-size: 60px;
+}
+
+.portofolio-tekst2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+.portofolio-tekst2 h1{
+    font-size: 60px;
+}
+
+.portofolio-tekst3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+.portofolio-tekst3 h1{
+    font-size: 60px;
+}
