@@ -18,6 +18,9 @@ enemy_image.src = "../src/img/Goomba.png"
 canvas.width = 1624
 canvas.height = 950
 
+var Score = 0;
+
+
 const gravity = 1.5
 
 class Player {
@@ -261,8 +264,9 @@ let platforms = [new Platform({
   x: 1600,
   y: 834
 }), new Platform({
-  x: 2000,
-  y: 834
+  x: 1800, y: 834
+}), new Platform({
+  x: 2000, y: 834
 }), new Platform({
   x: 2200,
   y: 834
@@ -279,22 +283,7 @@ let platforms = [new Platform({
   x: 3400,
   y: 834
 }), new Platform({
-  x: 3600,
-  y: 834
-}), new Platform({
-  x: 3800,
-  y: 834
-}), new Platform({
-  x: 4000,
-  y: 834
-}), new Platform({
-  x: 4200,
-  y: 834
-}), new Platform({
-  x: 4400,
-  y: 834,
-  x: 4400,
-  y: 834
+  x: 4400, y: 834
 }), new Platform({
   x: 4600,
   y: 834
@@ -338,17 +327,7 @@ let platforms = [new Platform({
   x: 7200,
   y: 834
 }), new Platform({
-  x: 7400,
-  y: 834
-}), new Platform({
-  x: 7600,
-  y: 834
-}), new Platform({
-  x: 7800,
-  y: 834
-}), new Platform({
-  x: 8000,
-  y: 834
+  x: 8000, y: 834
 }), new Platform({
   x: 8200,
   y: 834
@@ -376,18 +355,37 @@ let platforms = [new Platform({
   x: 4950,
   y: 420
 }), new Platform({
-  x: 1450,
-  y: 434
+  x: 3600, y: 634
 }), new Platform({
-  x: 950,
-  y: 434
+  x: 3800, y: 634
 }), new Platform({
-  x: 1250,
-  y: 434
+  x: 4000, y: 634
 }), new Platform({
-  x: 3200,
-  y: 320
-})]
+  x: 4200, y: 634
+}), new Platform({
+  x: 3800, y: 434
+}), new Platform({
+  x: 4000, y: 434
+}), new Platform({
+  x: 5000, y: 434
+}), new Platform({
+  x: 5200, y: 434
+}), new Platform({
+  x: 5600, y: 634
+}), new Platform({
+  x: 5800, y: 634
+}), new Platform({
+  x: 6000, y: 634
+}), new Platform({
+  x: 6400, y: 534
+}), new Platform({
+  x: 6600, y: 534
+}), new Platform({
+  x: 7200, y: 634
+}), new Platform({
+  x: 7400, y: 634
+})
+]
 
 let GenericObjects = [
   new GenericObject({
@@ -408,158 +406,119 @@ const keys = {
 let scrollOffset = 0
 
 function init() {
-  player = new Player()
-  platforms = [new Platform({
-    x: -20,
-    y: 834
-  }), new Platform({
-    x: 200,
-    y: 834
-  }), new Platform({
-    x: 400,
-    y: 834
-  }), new Platform({
-    x: 600,
-    y: 834
-  }), new Platform({
-    x: 800,
-    y: 834
-  }), new Platform({
-    x: 1000,
-    y: 834
-  }), new Platform({
-    x: 1200,
-    y: 834
-  }), new Platform({
-    x: 1400,
-    y: 834
-  }), new Platform({
-    x: 1600,
-    y: 834
-  }), new Platform({
-    x: 1800,
-    y: 834
-  }), new Platform({
-    x: 2000,
-    y: 834
-  }), new Platform({
-    x: 2200,
-    y: 834
-  }), new Platform({
-    x: 2800,
-    y: 834
-  }), new Platform({
-    x: 3000,
-    y: 834
-  }), new Platform({
-    x: 3200,
-    y: 834
-  }), new Platform({
-    x: 3400,
-    y: 834
-  }), new Platform({
-    x: 3600,
-    y: 834
-  }), new Platform({
-    x: 3800,
-    y: 834
-  }), new Platform({
-    x: 4000,
-    y: 834
-  }), new Platform({
-    x: 4200,
-    y: 834
-  }), new Platform({
-    x: 4400,
-    y: 834
-  }), new Platform({
-    x: 4600,
-    y: 834
-  }), new Platform({
-    x: 4800,
-    y: 834
-  }), new Platform({
-    x: 5000,
-    y: 834
-  }), new Platform({
-    x: 5200,
-    y: 834
-  }), new Platform({
-    x: 5400,
-    y: 834
-  }), new Platform({
-    x: 5600,
-    y: 834
-  }), new Platform({
-    x: 5800,
-    y: 834
-  }), new Platform({
-    x: 6000,
-    y: 834
-  }), new Platform({
-    x: 6200,
-    y: 834
-  }), new Platform({
-    x: 6400,
-    y: 834
-  }), new Platform({
-    x: 6600,
-    y: 834
-  }), new Platform({
-    x: 6800,
-    y: 834
-  }), new Platform({
-    x: 7000,
-    y: 834
-  }), new Platform({
-    x: 7200,
-    y: 834
-  }), new Platform({
-    x: 7400,
-    y: 834
-  }), new Platform({
-    x: 7600,
-    y: 834
-  }), new Platform({
-    x: 7800,
-    y: 834
-  }), new Platform({
-    x: 8000,
-    y: 834
-  }), new Platform({
-    x: 8200,
-    y: 834
-  }), new Platform({
-    x: 8400,
-    y: 834
-  }), new Platform({
-    x: 8600,
-    y: 834
-  }), new Platform({
-    x: 8800,
-    y: 834
-  }), new Platform({
-    x: 9000,
-    y: 834
-  }), new Platform({
-    x: 550,
-    y: 634
-  }), new Platform({
-    x: 950,
-    y: 534
-  }), new Platform({
-    x: 4500,
-    y: 420
-  }), new Platform({
-    x: 5000,
-    y: 834
-  }), new Platform({
-    x: 950,
-    y: 434
-  }), new Platform({
-    x: 1250,
-    y: 434
-  })]
+ player = new Player()
+ platforms = [new Platform({
+  x: -20, y: 834
+}), new Platform({
+  x: 200, y: 834
+}), new Platform({
+  x: 400, y: 834
+}), new Platform({
+  x: 600, y: 834
+}), new Platform({
+  x: 800, y: 834
+}), new Platform({
+  x: 1000, y: 834
+}), new Platform({
+  x: 1200, y: 834
+}), new Platform({
+  x: 1400, y: 834
+}), new Platform({
+  x: 1600, y: 834
+}), new Platform({
+  x: 1800, y: 834
+}), new Platform({
+  x: 2000, y: 834
+}), new Platform({
+  x: 2200, y: 834
+}), new Platform({
+  x: 2800, y: 834
+}), new Platform({
+  x: 3000, y: 834
+}), new Platform({
+  x: 3200, y: 834
+}), new Platform({
+  x: 3400, y: 834
+}), new Platform({
+   x: 4400, y: 834
+}), new Platform({
+   x: 4600, y: 834
+}), new Platform({
+   x: 4800, y: 834
+}), new Platform({
+   x: 5000, y: 834
+}), new Platform({
+   x: 5200, y: 834
+}), new Platform({
+   x: 5400, y: 834
+}), new Platform({
+   x: 5600, y: 834
+}), new Platform({
+   x: 5800, y: 834
+}), new Platform({
+   x: 6000, y: 834
+}), new Platform({
+   x: 6200, y: 834
+}), new Platform({
+   x: 6400, y: 834
+}), new Platform({
+   x: 6600, y: 834
+}), new Platform({
+   x: 6800, y: 834
+}), new Platform({
+   x: 7000, y: 834
+}), new Platform({
+   x: 7200, y: 834
+}), new Platform({
+   x: 8000, y: 834
+}), new Platform({
+   x: 8200, y: 834
+}), new Platform({
+   x: 8400, y: 834
+}), new Platform({
+   x: 8600, y: 834
+}), new Platform({
+   x: 8800, y: 834
+}), new Platform({
+   x: 9000, y: 834
+}), new Platform({
+  x: 550, y: 634
+}), new Platform({
+  x: 950, y: 534
+}), new Platform({
+  x: 1250, y: 434
+}), new Platform({
+   x: 3600, y: 634
+}), new Platform({
+   x: 3800, y: 634
+}), new Platform({
+   x: 4000, y: 634
+}), new Platform({
+   x: 4200, y: 634
+}), new Platform({
+   x: 3800, y: 434
+}), new Platform({
+   x: 4000, y: 434
+}), new Platform({
+   x: 5000, y: 434
+}), new Platform({
+   x: 5200, y: 434
+}), new Platform({
+   x: 5600, y: 634
+}), new Platform({
+   x: 5800, y: 634
+}), new Platform({
+   x: 6000, y: 634
+}), new Platform({
+   x: 6400, y: 534
+}), new Platform({
+   x: 6600, y: 534
+}), new Platform({
+   x: 7200, y: 634
+}), new Platform({
+   x: 7400, y: 634
+})
+]
 
   scrollOffset = 0
 
@@ -597,7 +556,8 @@ function animate() {
     platform.draw()
   })
 
-
+  Score = Score + 1;
+  document.getElementById("Score").innerHTML = Score;
   if (keys.right.pressed && player.position.x < 400) {
     player.velocity.x = 5
   } else if (keys.left.pressed && player.position.x > 100) {
@@ -632,7 +592,7 @@ function animate() {
       player.position.x + player.width >= platform.position.x && player.position.x <= platform.position.x +
       platform.width) {
       player.velocity.y = 0
-      player.isOnGround = true;  
+      player.isOnGround = true;
     }
   })
 
